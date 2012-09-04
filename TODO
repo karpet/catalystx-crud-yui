@@ -1,0 +1,31 @@
+* individual uri for each cell in datatable. clicking on the FK takes
+  you to the foreign table, or map table.
+
+* add full-text search with Search::QueryParser::SQL
+
+* mangle sort strings to support re-sort of m2m tables
+  by arbitrary chained methods.
+  example:
+
+    user.group.name
+
+  should sort on t4.name
+  in a left join like this:
+              events AS t1
+    LEFT JOIN user_events AS t2 ON t1.id = t2.event_id
+    LEFT JOIN users       AS t3 ON t2.user_id = t3.id
+    LEFT JOIN groups      AS t4 ON t3.gid     = t4.gid
+
+  or even a simpler case:
+
+    user.username
+
+  when called from a m2m livegrid tab for an Event object
+  with m2m rel 'users'. Has a m2m-mapping table called user_events.
+
+              events AS t1
+    LEFT JOIN user_events AS t2 ON t1.id = t2.event_id
+    LEFT JOIN users       AS t3 ON t2.user_id = t3.id
+
+  so user.username => t3.username
+
