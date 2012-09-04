@@ -11,7 +11,7 @@ our $VERSION = '0.01';
 
 __PACKAGE__->config(
     name   => 'MyRDBO',
-    static => {
+    'Catalyst::Plugin::Static::Simple::ByClass' => {
         mime_types   => { null => 'text/html' },
         include_path => [
             __PACKAGE__->path_to('root'),

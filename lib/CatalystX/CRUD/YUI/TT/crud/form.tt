@@ -35,7 +35,7 @@ IF (oid);
     oid = c.controller.make_primary_key_string(object) || 0;
 END;
 
-USE autoformat( all = 1 );  # for textarea readonly
+USE Autoformat( all = 1 );  # for textarea readonly
 
 %]
 [% BLOCK datetime_popup %]
