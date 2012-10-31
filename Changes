@@ -172,6 +172,6 @@ Revision history for CatalystX-CRUD-YUI
         * change 'use Class::C3' to 'use MRO::Compat' in test libs.
         * add m2m example to MyDBIC test app
 
-0.026   xxx
+0.026   31 Oct 2012
         * bundle livegrid js/css with package
         * support serialization of objects with their related objects
