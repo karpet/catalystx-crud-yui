@@ -300,6 +300,8 @@ sub serialize_object {
         my $relname_fields = delete $opts{relname_fields}
             or croak "relname_fields required if results defined";
         $flat->{$relname} = [];
+
+        #warn 'results=' . $opts{results};
         if ( ref $opts{results} eq 'ARRAY' ) {
             for my $r ( @{ $opts{results} } ) {
                 push @{ $flat->{$relname} },
@@ -310,11 +312,13 @@ sub serialize_object {
             }
         }
         else {
-            push @{ $flat->{$relname} },
-                $self->serialize_object(
-                object    => $opts{results},
-                col_names => $relname_fields,
-                );
+            while ( my $r = $opts{results}->next ) {
+                push @{ $flat->{$relname} },
+                    $self->serialize_object(
+                    object    => $r,
+                    col_names => $relname_fields,
+                    );
+            }
         }
     }
 
