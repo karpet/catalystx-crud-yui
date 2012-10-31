@@ -151,7 +151,7 @@ sub _init {
     my $controller = $self->{controller}
         or croak "controller required";
     my $form = $self->{form} or croak "form required";
-    my $app  = ($self->{c} || $form->app) or croak "\$c object required";
+    my $app = ( $self->{c} || $form->app ) or croak "\$c object required";
 
     $self->{hide_pk_columns} = $controller->hide_pk_columns;
 
@@ -408,6 +408,7 @@ sub json_reader_opts {
     my $self = shift;
 
     return {
+        restful         => JSON::XS::true(),
         root            => 'response.value.items',
         versionProperty => 'response.value.version',
         totalProperty   => 'response.value.total_count',
