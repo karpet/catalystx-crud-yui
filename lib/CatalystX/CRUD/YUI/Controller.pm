@@ -592,14 +592,31 @@ sub end : ActionClass('RenderView') {
             $c->log->debug("JSONifying object for response") if $c->debug;
             $c->stash( template => 'crud/jsonify.tt' )
                 unless defined $c->stash->{template};
-            $c->stash(
-                serial_args => {
-                    object => $c->stash->{object},
-                    takes_object_as_argument =>
-                        $self->form($c)->metadata->takes_object_as_argument,
-                    col_names => $self->form($c)->metadata->field_methods,
-                }
+            my %serial_args = (
+                object => $c->stash->{object},
+                takes_object_as_argument =>
+                    $self->form($c)->metadata->takes_object_as_argument,
+                col_names => $self->form($c)->metadata->field_methods,
             );
+            if ( $c->stash->{results} ) {
+                $serial_args{results} = $c->stash->{results};
+                $serial_args{relname} = $c->stash->{rel_name};
+
+         # we want the column names, etc., from the foreign controller's form.
+                my $foreign_controller
+                    = $self->form($c)
+                    ->metadata->relationship_info( $serial_args{relname} )
+                    ->get_controller;
+                my $foreign_form = $foreign_controller->form($c);
+                my $foreign_pk   = $foreign_controller->primary_key;
+
+               # list of columns must include PK but that is often not in Form
+               # if is an autoincrem value
+                my @fields = @{ $foreign_form->metadata->field_methods };
+                push( @fields, ref $foreign_pk ? @$foreign_pk : $foreign_pk );
+                $serial_args{relname_fields} = \@fields;
+            }
+            $c->stash( serial_args => \%serial_args );
 
             unless ( defined $c->res->status and $c->res->status =~ m/^[45]/ )
             {
@@ -614,6 +631,7 @@ sub end : ActionClass('RenderView') {
         $c->log->debug("view_class = $view_class") if $c->debug;
         $c->log->debug( "current_view set to " . $c->stash->{current_view} )
             if $c->debug;
+
     }
 }
 

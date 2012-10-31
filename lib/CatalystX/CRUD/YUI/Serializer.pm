@@ -292,10 +292,37 @@ sub serialize_object {
 
     }
 
+    # if results were passed in, treat them as child list
+    if ( $opts{results} ) {
+        my @data;
+        my $relname = delete $opts{relname}
+            or croak "relname required if results defined";
+        my $relname_fields = delete $opts{relname_fields}
+            or croak "relname_fields required if results defined";
+        $flat->{$relname} = [];
+        if ( ref $opts{results} eq 'ARRAY' ) {
+            for my $r ( @{ $opts{results} } ) {
+                push @{ $flat->{$relname} },
+                    $self->serialize_object(
+                    object    => $r,
+                    col_names => $relname_fields,
+                    );
+            }
+        }
+        else {
+            push @{ $flat->{$relname} },
+                $self->serialize_object(
+                object    => $opts{results},
+                col_names => $relname_fields,
+                );
+        }
+    }
+
     # html escape
     if ( $self->html_escape ) {
         for ( keys %$flat ) {
             next if !defined $flat->{$_};
+            next if ref $flat->{$_};
             $flat->{$_} =~ s/([$ToEscape])/$Ents{$1}/og;
         }
     }
@@ -349,11 +376,11 @@ sub serialize_livegrid {
         push(
             @data,
             $self->serialize_object(
-                {   object      => $object,
-                    method_name => $method_name,
-                    col_names   => $livegrid->col_names,
-                    parent      => $livegrid->c->stash->{object},
-                    c           => $livegrid->c,
+                {   object              => $object,
+                    method_name         => $method_name,
+                    col_names           => $livegrid->col_names,
+                    parent              => $livegrid->c->stash->{object},
+                    c                   => $livegrid->c,
                     show_related_values => $livegrid->show_related_values,
                     takes_object_as_argument =>
                         $livegrid->form->metadata->takes_object_as_argument,
