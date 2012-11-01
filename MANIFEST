@@ -33,6 +33,7 @@ lib/CatalystX/CRUD/YUI/TT/crud/header.tt
 lib/CatalystX/CRUD/YUI/TT/crud/jsonify.tt
 lib/CatalystX/CRUD/YUI/TT/crud/list.tt
 lib/CatalystX/CRUD/YUI/TT/crud/list.xls.tt
+lib/CatalystX/CRUD/YUI/TT/crud/list_related.tt
 lib/CatalystX/CRUD/YUI/TT/crud/livegrid.tt
 lib/CatalystX/CRUD/YUI/TT/crud/livegrid_js.tt
 lib/CatalystX/CRUD/YUI/TT/crud/livegrid_related_js.tt
@@ -47,6 +48,7 @@ lib/CatalystX/CRUD/YUI/TT/crud/subhead.tt
 lib/CatalystX/CRUD/YUI/TT/crud/submenu.tt
 lib/CatalystX/CRUD/YUI/TT/crud/tt_config.tt
 lib/CatalystX/CRUD/YUI/TT/crud/view.tt
+lib/CatalystX/CRUD/YUI/TT/crud/view_related.tt
 lib/CatalystX/CRUD/YUI/TT/crud/wrapper.tt
 lib/CatalystX/CRUD/YUI/TT/crud/yui_footer.tt
 lib/CatalystX/CRUD/YUI/TT/crud/yui_header.tt

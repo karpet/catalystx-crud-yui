@@ -175,3 +175,6 @@ Revision history for CatalystX-CRUD-YUI
 0.026   31 Oct 2012
         * bundle livegrid js/css with package
         * support serialization of objects with their related objects
+
+0.027   31 Oct 2012
+        * no code change, just adding missing files from 0.026
