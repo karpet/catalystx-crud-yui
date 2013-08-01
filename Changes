@@ -178,3 +178,7 @@ Revision history for CatalystX-CRUD-YUI
 
 0.027   31 Oct 2012
         * no code change, just adding missing files from 0.026
+
+0.028   xxx
+        * fix autoformat() use in crud/form.tt
+

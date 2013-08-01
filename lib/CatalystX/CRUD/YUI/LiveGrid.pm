@@ -11,7 +11,7 @@ use JSON::XS ();
 use Scalar::Util qw( blessed );
 use CatalystX::CRUD::YUI::Serializer;
 
-our $VERSION = '0.027';
+our $VERSION = '0.028';
 
 __PACKAGE__->mk_accessors(
     qw( yui results controller form c
