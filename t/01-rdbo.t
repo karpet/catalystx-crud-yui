@@ -72,8 +72,8 @@ SKIP: {
                 value => {
                     dir   => "",
                     items => [
+                        { id => 1, name => "blue" },
                         { id => 2, name => "orange" },
-                        { id => 1, name => "blue" }
                     ],
                     limit       => 50,
                     offset      => "",
