@@ -1,6 +1,6 @@
 Revision history for CatalystX-CRUD-YUI
 
-0.028 xxx
+0.028 12 Sept 2013
  - fix autoformat() use in crud/form.tt
 
 0.027 31 Oct 2012
