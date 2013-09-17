@@ -11,8 +11,10 @@ use Path::Class;
 use Class::Inspector;
 use CatalystX::CRUD::YUI;
 use CatalystX::CRUD::YUI::TT;
+use Search::Tools::UTF8;
+use Encode;
 
-our $VERSION = '0.028';
+our $VERSION = '0.029';
 
 =head1 NAME
 
@@ -46,6 +48,7 @@ __PACKAGE__->config(
     TEMPLATE_EXTENSION => '.tt',
     PRE_PROCESS        => 'crud/tt_config.tt',
     WRAPPER            => 'crud/wrapper.tt',
+    ENCODING           => 'utf-8',
 );
 
 =head1 METHODS
@@ -192,6 +195,18 @@ sub process {
 
     return $self->next::method($c);
 
+}
+
+=head2 render
+
+Overrides base method to coerce output into UTF-8.
+
+=cut
+
+sub render {
+    my ($self, @arg) = @_; 
+    my $out = $self->next::method(@arg);
+    return encode_utf8( to_utf8( $out ) );
 }
 
 1;

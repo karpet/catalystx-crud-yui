@@ -1,7 +1,7 @@
 package CatalystX::CRUD::YUI::TT::crud;
 use strict;
 
-our $VERSION = '0.028';
+our $VERSION = '0.029';
 
 =head1 NAME
 
