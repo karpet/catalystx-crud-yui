@@ -8,7 +8,7 @@
       &&  form.metadata.is_related_field( fname ) 
       &&  !c.controller.primary_key.grep( "^$fname$" ).size
     );
-  SET rel_info      = form.metadata.related_field( fname );
+  SET rel_info      = form.metadata.related_field( fname, object );
   CALL rel_info.get_controller;
   SET foreign_field = form.metadata.show_related_field_using( rel_info.foreign_class, fname );  
   SET foreign_key   = rel_info.foreign_column_for(fname);
