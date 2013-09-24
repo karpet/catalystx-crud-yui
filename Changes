@@ -1,6 +1,6 @@
 Revision history for CatalystX-CRUD-YUI
 
-0.029 xxx
+0.029 24 Sept 2013
  - default View now coerces all output to UTF-8.
  - pass object to form.metadata.related_field() in case object affects
    the relationship returned.
