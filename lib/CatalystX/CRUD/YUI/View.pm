@@ -14,7 +14,7 @@ use CatalystX::CRUD::YUI::TT;
 use Search::Tools::UTF8;
 use Encode;
 
-our $VERSION = '0.029';
+our $VERSION = '0.030';
 
 =head1 NAME
 

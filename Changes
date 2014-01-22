@@ -1,5 +1,9 @@
 Revision history for CatalystX-CRUD-YUI
 
+0.030 21 Jan 2014
+ - YUI 2.x is deprecated since 2011 and they finally changed the icon urls.
+   Fix the calendar icon.
+
 0.029 24 Sept 2013
  - default View now coerces all output to UTF-8.
  - pass object to form.metadata.related_field() in case object affects

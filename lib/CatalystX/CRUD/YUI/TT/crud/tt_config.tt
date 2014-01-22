@@ -6,7 +6,7 @@
     ExtVersion      = 'ext-2.2';
     LGBaseURL       = c.uri_for('/static/js/livegrid');
     LGVersion       = 'build';
-    CalendarIconUrl = 'https://developer.yahoo.com/yui/examples/button/assets/calendar_icon.gif';
+    CalendarIconUrl = 'http://yui.github.io/yui2/docs/yui_2.9.0_full/examples/button/assets/calendar_icon.gif';
     ThisIsDefTTConfig = 1;
     LIVEGRID_FORM_SIZE = 7;   # max number of related form fields to trigger livegrid_related_form URL
 %]
