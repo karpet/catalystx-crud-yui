@@ -435,7 +435,7 @@ sub form_to_object {
     {
         $c->response->status(500);
         my $err = $self->all_form_errors( $c->stash->{form} );
-        $err =~ s,\n,<br />,g;
+        $err =~ s,\n,<br \/>,g;
         $c->response->body($err);
     }
     return $obj;
