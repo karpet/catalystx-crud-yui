@@ -29,7 +29,7 @@ __PACKAGE__->config(
     },
 );
 
-our $VERSION = '0.030';
+our $VERSION = '0.030_01';
 
 =head1 NAME
 
@@ -543,7 +543,17 @@ sub autocomplete : Local {
     $p->{'cxc-page_size'} = $p->{l};
     $p->{'cxc-op'}        = 'OR';
     $p->{'cxc-fmt'}       = 'json';
-    $p->{$_} = $p->{query} for @$ac_columns;
+
+    # we want the terms OR'd by column but we want all the terms to match
+    # so we hack the query to add an explicit AND between terms.
+    if ( @$ac_columns > 1 ) {
+        $p->{'cxc-query'} = $p->{query};
+        $p->{'cxc-query'} =~ s/\ +/ AND /g;
+        $p->{'cxc-query-fields'} = $ac_columns;
+    }
+    else {
+        $p->{$_} = $p->{query} for @$ac_columns;
+    }
     my $query = $self->do_model( $c, 'make_query', $ac_columns );
 
     $c->stash->{results}    = $self->do_model( $c, 'search', $query );
