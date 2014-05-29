@@ -30,7 +30,7 @@ requires 'Scalar::Util'                          => 0;
 requires 'MRO::Compat'                           => 0;
 requires 'JSON::XS'                              => 2.23;
 requires 'Template::Plugin::Handy'               => 0.002;
-requires 'Template::Plugin::Autoformat'          => 0;
+requires 'Template::Plugin::Autoformat'          => '2.75';
 requires 'Class::Inspector'                      => 0;
 
 license 'perl';

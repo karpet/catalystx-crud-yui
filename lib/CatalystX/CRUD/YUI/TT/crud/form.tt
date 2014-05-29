@@ -108,7 +108,7 @@ USE Autoformat( all = 1 );  # for textarea readonly
                 # handles it's own line breaks, etc.
                 UNLESS field.output_value.match('<.+>');
                     "<pre>"; 
-                    field.output_value | autoformat | html;
+                    field.output_value | Autoformat | html;
                     "</pre>";
                 ELSE;
                     field.output_value;
