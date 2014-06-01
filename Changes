@@ -4,6 +4,7 @@ Revision history for CatalystX-CRUD-YUI
  - improve the autocomplete search algorithm to act more like
    what most people would expect
  - require Template::Plugin::Autoformat 2.75
+ - added Search::Tools dependency to the Makefile.PL
 
 0.030 21 Jan 2014
  - YUI 2.x is deprecated since 2011 and they finally changed the icon urls.

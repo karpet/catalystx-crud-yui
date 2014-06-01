@@ -32,6 +32,7 @@ requires 'JSON::XS'                              => 2.23;
 requires 'Template::Plugin::Handy'               => 0.002;
 requires 'Template::Plugin::Autoformat'          => '2.75';
 requires 'Class::Inspector'                      => 0;
+requires 'Search::Tools'                         => '1.000';
 
 license 'perl';
 homepage 'https://github.com/karpet/catalystx-crud-yui';
