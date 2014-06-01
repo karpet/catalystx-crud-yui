@@ -39,5 +39,9 @@ homepage 'https://github.com/karpet/catalystx-crud-yui';
 bugtracker 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=CatalystX-CRUD-YUI';
 repository 'https://github.com/karpet/catalystx-crud-yui';
 
-WriteAll;
+WriteMakefile(
+    clean => {
+        FILES => 'CatalystX-CRUD-YUI*tar.gz'
+    }
+);
 

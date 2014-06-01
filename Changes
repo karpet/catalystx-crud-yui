@@ -1,6 +1,6 @@
 Revision history for CatalystX-CRUD-YUI
 
-0.031 xxx
+0.031 2014-05-31
  - improve the autocomplete search algorithm to act more like
    what most people would expect
  - require Template::Plugin::Autoformat 2.75
